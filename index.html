@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Resume - Start Bootstrap Theme</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            body {
+              font-family: Arial, sans-serif;
+              margin: 0;
+              background-color: #f0f0f0;
+            }
+        
+            h1 {
+              margin-top: 20px;
+            }
+        
+            #game-container {
+              position: relative;
+              width: 600px;
+              height: 200px;
+              border: 2px solid #000;
+              margin: 20px auto;
+              overflow: hidden;
+              background-color: #fff;
+            }
+        
+            #player {
+                position: absolute;
+                bottom: 0;
+                left: 50px;
+                width: 30px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                }
+
+                /* Stick figure design */
+                .stick-figure {
+                position: relative;
+                width: 10px;
+                height: 40px;
+                background: transparent;
+                }
+
+                /* Head */
+                .stick-figure::before {
+                content: '';
+                position: absolute;
+                top: -15px;
+                left: 50%;
+                width: 15px;
+                height: 15px;
+                background-color: black;
+                border-radius: 50%;
+                transform: translateX(-50%);
+                }
+
+                /* Body */
+                .stick-figure::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 50%;
+                width: 2px;
+                height: 40px;
+                background-color: black;
+                transform: translateX(-50%);
+                }
+
+                /* Arms */
+                .arm {
+                position: absolute;
+                width: 20px;
+                height: 2px;
+                background-color: black;
+                top: 10px;
+                }
+
+                .arm.left {
+                left: -18px;
+                animation: armSwing 0.5s infinite alternate;
+                }
+
+                .arm.right {
+                right: -18px;
+                animation: armSwing 0.5s infinite alternate-reverse;
+                }
+
+                /* Legs */
+                .leg {
+                position: absolute;
+                width: 2px;
+                height: 20px;
+                background-color: black;
+                bottom: 0;
+                }
+
+                .leg.left {
+                left: 2px;
+                animation: legSwing 0.5s infinite alternate;
+                }
+
+                .leg.right {
+                right: 2px;
+                animation: legSwing 0.5s infinite alternate-reverse;
+                }
+
+                @keyframes armSwing {
+                from {
+                    transform: rotate(20deg);
+                }
+                to {
+                    transform: rotate(-20deg);
+                }
+                }
+
+                @keyframes legSwing {
+                from {
+                    transform: rotate(20deg);
+                }
+                to {
+                    transform: rotate(-20deg);
+                }
+                }
+
+                .obstacle {
+                position: absolute;
+                bottom: 0;
+                width: 20px;
+                height: 30px;
+                background-color: #009688;
+                animation: moveObstacle 2s linear infinite;
+                }
+
+                @keyframes moveObstacle {
+                from {
+                    right: -20px;
+                }
+                to {
+                    right: 100%;
+                }
+                }
+
+                .game-over {
+                font-size: 24px;
+                font-weight: bold;
+                color: red;
+                text-align: center;
+                }
+
+                #status {
+                font-size: 18px;
+                margin-top: 10px;
+                }
+
+                .title-subtitle {
+                    text-align: center;
+                }
+          </style>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">Nic Wood</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/Nic Wood Profile.jpeg" alt="..." /></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills & Interests</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#game-demo">Game</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="scratch.html">Lionel Messi</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section" id="about">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">
+                        Nic
+                        <span class="text-primary">Wood</span>
+                    </h1>
+                    <div class="subheading mb-5">
+                        Provo, UT 84601 · (123) 456-7890 ·
+                        <a href="mailto:name@email.com">him@email.com</a>
+                    </div>
+                    <p class="lead mb-5">I am a Pre-Business student at Brigham Young University. I am fascinated by the study of finance, accounting, and real estate. I am interested in exploring career opportunities related to those fields.</p>
+                    <div class="social-icons">
+                        <a class="social-icon" href="https://www.linkedin.com/in/nicholas-wood-3300b2251/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Experience</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Portfolio Analyst Intern</h3>
+                            <div class="subheading mb-3">TownSquare Capital</div>
+                            <ul>
+                                <li>Support 50+ RIAs by analyzing $300 million of portfolio audits and creating $200 million proposal allocations</li>
+                                <li>Create custom tax transition plans, bond ladders, derivative products, and custom indexing</li>
+                                <li>Collaborate with advisors to develop tailored portfolios and proposals, ensuring alignment with client goals and expectations</li>
+                            </ul>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">March 2024 - Present</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Acquisition Analyst</h3>
+                            <div class="subheading mb-3">Utah Peak Home Solutions</div>
+                            <ul>
+                                <li>Analyzed 100+ multi-family and single-family properties and submitted profitable offers</li>
+                                <li>Contacted 1000+ potential clients and offered buy or loan options</li>
+                                <li>Worked with upper management and participated in training meetings</li>
+                            </ul>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">December 2023 - August 2024</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Sales Associate</h3>
+                            <div class="subheading mb-3">Fox Pest Control</div>
+                            <ul>
+                                <li>Personally accounted for bringing in 100+ new customers</li>
+                                <li>Worked with a team that sold approximately $3,000,000 in company revenue</li>
+                                <li>Worked daily with customers and technicians to provide excellent service and meet needs</li>
+                            </ul>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">January 2023 - August 2023</span></div>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Education-->
+            <section class="resume-section" id="education">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Education</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Brigham Young University</h3>
+                            <div class="subheading mb-3">Pre-Business</div>
+                            <ul>
+                                <li>GPA: 4.0</li>
+                                <li>Finance Society Member</li>
+                                <li>Accounting Society Member</li>
+                            </ul>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">August 2024 - May 2026</span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Utah Valley University</h3>
+                            <div class="subheading mb-3">Associate of Science</div>
+                            <ul>
+                                <li>UVU Presidential Scholarship</li>
+                                <li>UVU Honor Program and Dean’s List</li>
+                            </ul>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">August 2022 - May 2024</span></div>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Skills & Interest-->
+            <section class="resume-section" id="skills">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Skills & Interests</h2>
+                    <ul>
+                        <li>Microsoft Office (Excel, Word, PowerPoint), Morningstar Direct, Bloomberg Terminal, VBA, Tableau, WebDev</li>
+                        <li>Language Fluency: Spanish and Marshallese</li>
+                        <li>Interest: skiing, soccer, reading, and traveling (Guatemala is my favorite country so far)</li>
+                    </ul>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Game-->
+            <section class="resume-section" id="game-demo">
+                <div class="resume-section-content title-subtitle">
+                    <h1>Line Runner Game</h1>
+                    <p>Press the "Right Arrow" key to start the game and jump to avoid obstacles!</p>
+                    <div id="game-container">
+                        <div id="player">
+                        <div class="stick-figure">
+                            <div class="arm left"></div>
+                            <div class="arm right"></div>
+                            <div class="leg left"></div>
+                            <div class="leg right"></div>
+                        </div>
+                        </div>
+                    </div>
+                    <p id="status"></p>
+
+                    <script>
+                        const player = document.getElementById('player');
+                        const gameContainer = document.getElementById('game-container');
+                        const status = document.getElementById('status');
+                        let isJumping = false;
+                        let isGameOver = false;
+                        let gameStarted = false;
+
+                        function jump() {
+                        if (isJumping) return;
+                        isJumping = true;
+
+                        let jumpHeight = 0;
+                        const jumpInterval = setInterval(() => {
+                            if (jumpHeight >= 100) {
+                            clearInterval(jumpInterval);
+                            const fallInterval = setInterval(() => {
+                                if (jumpHeight <= 0) {
+                                clearInterval(fallInterval);
+                                isJumping = false;
+                                }
+                                jumpHeight -= 5;
+                                player.style.bottom = `${jumpHeight}px`;
+                            }, 20);
+                            }
+                            jumpHeight += 5;
+                            player.style.bottom = `${jumpHeight}px`;
+                        }, 20);
+                        }
+
+                        function createObstacle() {
+                        if (isGameOver) return;
+                        const obstacle = document.createElement('div');
+                        obstacle.classList.add('obstacle');
+                        gameContainer.appendChild(obstacle);
+                        obstacle.style.right = '0px';
+
+                        function moveObstacle() {
+                            if (isGameOver) {
+                            obstacle.remove();
+                            return;
+                            }
+
+                            let obstaclePosition = parseInt(window.getComputedStyle(obstacle).getPropertyValue('right'));
+                            if (obstaclePosition >= gameContainer.clientWidth) {
+                            obstacle.remove();
+                            return;
+                            }
+
+                            obstacle.style.right = `${obstaclePosition + 5}px`;
+
+                            // Collision detection
+                            const playerBottom = parseInt(window.getComputedStyle(player).getPropertyValue('bottom'));
+                            const playerLeft = player.offsetLeft;
+                            const playerRight = playerLeft + player.clientWidth;
+                            const obstacleLeft = gameContainer.clientWidth - obstaclePosition;
+                            const obstacleRight = obstacleLeft + obstacle.clientWidth;
+
+                            if (playerBottom <= obstacle.clientHeight && playerRight >= obstacleLeft && playerLeft <= obstacleRight) {
+                            status.textContent = 'Game Over! Press the Right Arrow to restart.';
+                            status.classList.add('game-over');
+                            isGameOver = true;
+                            } else {
+                            requestAnimationFrame(moveObstacle);
+                            }
+                        }
+
+                        requestAnimationFrame(moveObstacle);
+                        }
+
+                        function startGame() {
+                        if (!gameStarted) {
+                            gameStarted = true;
+                            setInterval(createObstacle, 2000);
+                        }
+                        }
+
+                        document.addEventListener('keydown', (e) => {
+                        if (e.code === 'ArrowRight') {
+                            if (isGameOver) {
+                            location.reload(); // Reload the page if the game is over
+                            } else {
+                            startGame();
+                            jump();
+                            }
+                        }
+                        });
+                    </script>
+                </div>
+            </section>
+            <hr class="m-0" />
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
